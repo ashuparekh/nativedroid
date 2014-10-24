@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>nativeDroid - Theme for jQuery Mobile</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+
+	<!-- jQueryMobileCSS - original without styling -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+	<!-- nativeDroid core CSS -->
+	<link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+	<!-- nativeDroid: Light/Dark -->
+	<link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+	<!-- nativeDroid: Color Schemes -->
+	<link rel="stylesheet" href="css/jquerymobile.nativedroid.color.blue.css" id='jQMnDColor' />
+
+	<!-- jQuery / jQueryMobile Scripts -->
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+	<script>
+		$( document ).on( "pagecreate", "#demo-page", function() {
+			$( document ).on( "swipeleft swiperight", "#demo-page", function( e ) {
+        // We check if there is no open panel on the page because otherwise
+        // a swipe to close the left panel would also open the right panel (and v.v.).
+        // We do this by checking the data that the framework stores on the page element (panel: open).
+        if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
+        	if ( e.type === "swipeleft" ) {
+        		$( "#right-panel" ).panel( "open" );
+        	} else if ( e.type === "swiperight" ) {
+        		$( "#left-panel" ).panel( "open" );
+        	}
+        }
+    });
+		});
+	</script>
+
+
+	<style>
+
+		/* Swipe works with mouse as well but often causes text selection. */
+		/* We'll deny text selecton on everything but INPUTs and TEXTAREAs. */
+		#demo-page :not(INPUT):not(TEXTAREA) {
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		/* Content styling. */
+		
+	</style>
+
+
+</head>
+<body>
+
+	<div data-role="page" data-theme='b' id="demo-page" >
+
+		<div data-role="panel" data-display="push" id="left-panel" data-theme="b">
+			<ul data-role="listview">
+				<li>Your wishes</li>
+				<li data-icon='false'><a href="#"><i class='lIcon fa fa-coffee'></i>Need a Coffee</a></li>
+				<li data-icon='false'><a href="#"><i class='lIcon fa fa-beer'></i>Have a Beer</a></li>
+				<li data-icon='false'><a href="#"><i class='lIcon fa fa-music'></i>Play Music</a></li>
+				<li data-icon='false'><a href="#"><i class='lIcon fa fa-fire'></i>Make a fire</a></li>
+				<li data-icon='false'><a href="#"><i class='lIcon fa fa-bullhorn'></i>Shout it loud</a></li>
+				<li data-icon='false'><a href="#"><i class='lIcon fa fa-heart'></i>Meet friends</a></li>
+				<li data-icon='false'><a href="#"><i class='lIcon fa fa-trophy'></i>Win a Trophy</a></li>
+			</ul>
+		</div>
+		<div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+			<a href="#left-panel" data-role='button' data-inline='true'><i class='lIcon fa fa-bars'></i></a>
+			<h1>DJ-CSI</h1>
+			
+		</div>
+
+
+		<div data-role="content" data-theme="b">
+
+			<div data-role="tabs" id="tabs">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#one" data-ajax="false">DJSCE</a></li>
+						<li><a href="#two" data-ajax="false">CSI</a></li>
+						<li><a href="ajax-content.html" data-ajax="false">The Team</a></li>
+					</ul>
+				</div>
+				<hr><hr>
+				<div id="one" class="ui-body-d ui-content">
+					<h1>First tab contents</h1>
+				</div>
+				<div id="two">
+					<ul data-role="listview" data-inset="true">
+						<li><a href="#">Acura</a></li>
+						<li><a href="#">Audi</a></li>
+						<li><a href="#">BMW</a></li>
+						<li><a href="#">Cadillac</a></li>
+						<li><a href="#">Ferrari</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+		</div>
+
+
+
+
+	</body>
+	</html>
